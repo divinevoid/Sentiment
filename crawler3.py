@@ -1,9 +1,11 @@
 import tweepy
 import csv
+import json
 
-# Twitter API credentials (replace with your credentials)
-BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAALN6vwEAAAAAcWu%2B8GltOvDxDt58ctasR%2BIk6nA%3DGCNJ0ryanRzRbWdseyRCqHiaqWoVkoHaSz1HjMCtpFEMoZSMya"
+with open("config.json") as config_file:
+    config = json.load(config_file)
 
+BEARER_TOKEN = config["BEARER_TOKEN"]
 # Authenticate using OAuth1UserHandler
 auth = tweepy.OAuth2BearerHandler(BEARER_TOKEN)
 

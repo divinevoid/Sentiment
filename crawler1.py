@@ -1,12 +1,16 @@
 import tweepy
 import csv
+import json
 
-# Twitter API credentials
-api_key = "wNdkbqX4Ccpy9kk4mx3ZxZyTs"
-api_key_secret = "7cQmBmf07xJzsO8ayB3iYTGJ7cdEJf9v94iZpdxfdNPmskaMEh"
-access_token = "1829411137231732736-Yfjqf5aIrLjW9owXfylj7u7GWf4da3"
-access_token_secret = "31QObFbSND7g7pFc8KihpqnIT7Aan6pcCrMzL0Pk6V381"
-bearer_token = "AAAAAAAAAAAAAAAAAAAAALN6vwEAAAAAC%2FW00lfLqAhbWmedg0aQU%2FEXX4w%3DaYBvxPc6Isk1A18ztITlFfQ1WzD08upuqDY82y54im6GOg6qEu"
+with open("config.json") as config_file:
+    config = json.load(config_file)
+
+api_key = config["API_KEY"]
+api_secret = config["API_SECRET_KEY"]
+access_token = config["ACCESS_TOKEN"]
+access_token_secret = config["ACCESS_TOKEN_SECRET"]
+bearer_token = config["BEARER_TOKEN"]
+
 
 if not bearer_token:
     print("Bearer token is missing. Please ensure it is set correctly.")
