@@ -1,16 +1,18 @@
 import tweepy
 import csv
 
-# Twitter API credentials (replace with your credentials)
-API_KEY = "dDrmTPfTBWXy7Uo23fJnl1v3l"
-API_SECRET_KEY = "icgAhZlxZrDPiin2wvHoZgg8XMEXrRGIa89Imm55AnH7fGVh25"
-ACCESS_TOKEN = "1829411137231732736-xDBOyerIGzlW7SfO43Km0EieOUbzab"
-ACCESS_TOKEN_SECRET = "8NjvBR0fJGHUzF7v18SLJXvFW2tgA4kCmtAAnZRF0ctfI"
+import json
+
+with open("config.json") as config_file:
+    config = json.load(config_file)
+
+api_key = config["API_KEY"]
+api_secret = config["API_SECRET_KEY"]
+access_token = config["ACCESS_TOKEN"]
+access_token_secret = config["ACCESS_TOKEN_SECRET"]
 
 # Authenticate using OAuth1UserHandler
-auth = tweepy.OAuth1UserHandler(
-    API_KEY, API_SECRET_KEY, ACCESS_TOKEN, ACCESS_TOKEN_SECRET
-)
+auth = tweepy.OAuth1UserHandler(api_key, api_secret, access_token, access_token_secret)
 
 # Create the API object while passing in the authentication information
 api = tweepy.API(auth, wait_on_rate_limit=True)
